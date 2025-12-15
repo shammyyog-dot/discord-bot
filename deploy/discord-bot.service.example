@@ -1,0 +1,14 @@
+[Unit]
+Description=Discord Bot
+After=network.target
+
+[Service]
+Type=simple
+User=discord
+WorkingDirectory=/opt/discord-bot
+EnvironmentFile=/opt/discord-bot/.env
+ExecStart=/opt/discord-bot/.venv/bin/python /opt/discord-bot/bot.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
