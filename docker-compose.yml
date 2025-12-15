@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  discord-bot:
+    build: .
+    image: discord-bot:latest
+    container_name: discord-bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./balances.db:/app/balances.db
+      - ./bot.log:/app/bot.log
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'import sqlite3; print(1)' >/dev/null 2>&1 || exit 1'"]
+      interval: 1m
+      timeout: 10s
+      retries: 3

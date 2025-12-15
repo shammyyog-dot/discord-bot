@@ -26,6 +26,18 @@ Or use the helper script which bootstraps a venv and installs dependencies:
 ./run.sh
 ```
 
+Docker
+------
+
+Build and run with Docker (recommended `restart: unless-stopped`):
+
+```bash
+docker compose build
+docker compose up -d
+```
+
+The compose file reads environment variables from `.env` and mounts `balances.db` so balances persist.
+
 Commands
 --------
 
